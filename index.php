@@ -70,7 +70,7 @@ error_reporting(0);
 </head>
 <body>
 
-    <div class="sufee-login d-flex align-content-center flex-wrap " style="background-image:url(img/bg.jpg);">
+    <div class="sufee-login d-flex align-content-center flex-wrap ">
         <div class="container">
             <img src="img/bg.jpg">
         </div>
