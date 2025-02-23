@@ -7,12 +7,40 @@ if (!isset($_SESSION['admin'])) {
     exit();
 }
 
+// Handle delete request
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_id"])) {
+    $id = $_POST["delete_id"];
+
+    // Fetch the file URL to delete the file from the server
+    $sql = "SELECT file_url FROM results WHERE id = '$id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $file_url = $row['file_url'];
+
+        // Delete the file from the server
+        if (file_exists($file_url)) {
+            unlink($file_url);
+        }
+
+        // Delete the record from the database
+        $conn->query("DELETE FROM results WHERE id = '$id'");
+        header("Location: admin_dashboard.php");
+        exit();
+    } else {
+        echo "Record not found.";
+    }
+}
+
+// Handle file upload
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file"])) {
     $roll_number = $_POST["roll_number"];
     $password = $_POST["password"];
-    $semester = $_POST["semester"]; // Get the semester
+    $semester = $_POST["semester"];
     $upload_dir = "../uploads/$semester/"; // Organize files by semester
 
+    // Create the directory if it doesn't exist
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0777, true);
     }
@@ -22,16 +50,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file"])) {
     $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $allowed_types = ["pdf", "jpg", "jpeg", "png"];
 
-    if (in_array($file_type, $allowed_types) && move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        $sql = "INSERT INTO results (roll_number, password, semester, file_url) VALUES ('$roll_number', '$password', '$semester', '$target_file')";
-        if ($conn->query($sql) === TRUE) {
-            echo "File uploaded successfully.";
+    // Check if the file type is allowed
+    if (in_array($file_type, $allowed_types)) {
+        // Move the uploaded file to the target directory
+        if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+            // Insert the file details into the database
+            $sql = "INSERT INTO results (roll_number, password, semester, file_url) VALUES ('$roll_number', '$password', '$semester', '$target_file')";
+            if ($conn->query($sql) === TRUE) {
+                echo "File uploaded successfully.";
+            } else {
+                echo "Error: " . $conn->error;
+            }
         } else {
-            echo "Error: " . $conn->error;
+            echo "File upload failed.";
         }
     } else {
-        echo "Invalid file type or upload failed.";
+        echo "Invalid file type. Only PDF, JPG, JPEG, and PNG files are allowed.";
     }
+
     header("Location: admin_dashboard.php");
     exit();
 }
