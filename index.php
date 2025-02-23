@@ -65,9 +65,9 @@ error_reporting(0);
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> 
 </head>
-<body class="bg-light" style="background-image:url(img/bg.jpg);">
+<body class="bg-light" >
 
-    <div class="sufee-login d-flex align-content-center flex-wrap">
+    <div class="sufee-login d-flex align-content-center flex-wrap" style="background-image:url(img/bg.jpg);">
         <div class="container">
 
         </div>
