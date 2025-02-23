@@ -1,0 +1,70 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Sign In
+    </title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="md:w-1/2">
+            <img alt="University building with students sitting on the lawn" class="w-full h-full object-cover"
+                height="400"
+                src="https://storage.googleapis.com/a1aa/image/-2CBCzf3Z4z75gGd1xt8KBGFd5m8XUEFeAHmT5XaZ3I.jpg"
+                width="600" />
+        </div>
+        <div class="md:w-1/2 p-8">
+            <div class="flex flex-col items-center">
+                <img alt="University logo" class="w-24 h-24 mb-4" height="100"
+                    src="https://storage.googleapis.com/a1aa/image/c6BN5rSEYhk70hd4imlVN_XZUw9pneoRuOrNXH2h4cs.jpg"
+                    width="100" />
+                <h2 class="text-2xl font-semibold mb-6">
+                    Sign in
+                </h2>
+                <form class="w-full">
+                    <div class="mb-4">
+                        <label class="block text-gray-700" for="userid">
+                            UserId *
+                        </label>
+                        <input
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" type="text" name="roll_number" placeholder="Roll Number" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700" for="password">
+                            Password *
+                        </label>
+                        <input
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="mb-4">
+                        <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700" type="submit">
+                            SIGN IN
+                        </button>
+                    </div>
+                    <div class="flex justify-between items-center mb-4">
+                        <a class="text-blue-600 hover:underline" href="#">
+                            Reset Password
+                        </a>
+                    </div>
+                    <div class="flex justify-center">
+                        <button class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700" type="button">
+                            ANNOUCEMENTS
+                        </button>
+                    </div>
+                </form>
+                <p class="text-gray-500 text-sm mt-6">
+                    Copyright © IK Gujral Punjab Technical University 2025.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
