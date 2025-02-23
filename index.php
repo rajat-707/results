@@ -69,34 +69,35 @@ error_reporting(0);
 
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
-            <div class="login-content">
+
+        </div>
+    </div>
+    <div class="login-content">
                 <div class="login-logo">
                     <a href="/">
                        <img class="align-content" src="img/logo.png" alt="">
                     </a>
                 </div>
-                <div class="login-form">
-                    <form method="Post" Action="">
-                            <?php echo $errorMsg; ?>
-                        <strong><h2 align="center">Student Login</h2></strong><hr>
-                        <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" name="matricNo" Required class="form-control" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" name="password" Required class="form-control" placeholder="">
-                        </div>
-                        
-                        </div>
-                        <br><!-- Log on to codeastro.com for more projects! -->
-                        <button type="submit" name="login" class="btn btn-success btn-flat m-b-30 m-t-30">Log in</button>
-                        
-                    </form>
+        <div class="login-form">
+            <form method="Post" Action="">
+                    <?php echo $errorMsg; ?>
+                <strong><h2 align="center">Student Login</h2></strong><hr>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="matricNo" Required class="form-control" placeholder="">
                 </div>
-            </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" Required class="form-control" placeholder="">
+                </div>
+                
+                </div>
+                <br><!-- Log on to codeastro.com for more projects! -->
+                <button type="submit" name="login" class="btn btn-success btn-flat m-b-30 m-t-30">Log in</button>
+                
+            </form>
         </div>
-    </div>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
