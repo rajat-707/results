@@ -1,0 +1,27 @@
+[09-Feb-2025 11:33:02 UTC] PHP Warning:  include(../includes/dbconnection.php): Failed to open stream: No such file or directory in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 4
+[09-Feb-2025 11:33:02 UTC] PHP Warning:  include(): Failed opening '../includes/dbconnection.php' for inclusion (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 4
+[09-Feb-2025 11:33:02 UTC] PHP Warning:  Undefined variable $con in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 8
+[09-Feb-2025 11:33:02 UTC] PHP Warning:  Undefined variable $matricNo in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 8
+[09-Feb-2025 11:33:02 UTC] PHP Fatal error:  Uncaught TypeError: mysqli_query(): Argument #1 ($mysql) must be of type mysqli, null given in /home/u616690408/domains/result.themensense.com/public_html/index.php:8
+Stack trace:
+#0 /home/u616690408/domains/result.themensense.com/public_html/index.php(8): mysqli_query()
+#1 {main}
+  thrown in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 8
+[09-Feb-2025 11:33:05 UTC] PHP Warning:  include(../includes/dbconnection.php): Failed to open stream: No such file or directory in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 4
+[09-Feb-2025 11:33:05 UTC] PHP Warning:  include(): Failed opening '../includes/dbconnection.php' for inclusion (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 4
+[09-Feb-2025 11:33:05 UTC] PHP Warning:  Undefined variable $con in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 8
+[09-Feb-2025 11:33:05 UTC] PHP Warning:  Undefined variable $matricNo in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 8
+[09-Feb-2025 11:33:05 UTC] PHP Fatal error:  Uncaught TypeError: mysqli_query(): Argument #1 ($mysql) must be of type mysqli, null given in /home/u616690408/domains/result.themensense.com/public_html/index.php:8
+Stack trace:
+#0 /home/u616690408/domains/result.themensense.com/public_html/index.php(8): mysqli_query()
+#1 {main}
+  thrown in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 8
+[09-Feb-2025 11:33:17 UTC] PHP Warning:  include(../includes/dbconnection.php): Failed to open stream: No such file or directory in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 4
+[09-Feb-2025 11:33:17 UTC] PHP Warning:  include(): Failed opening '../includes/dbconnection.php' for inclusion (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 4
+[09-Feb-2025 11:33:17 UTC] PHP Warning:  Undefined variable $con in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 8
+[09-Feb-2025 11:33:17 UTC] PHP Warning:  Undefined variable $matricNo in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 8
+[09-Feb-2025 11:33:17 UTC] PHP Fatal error:  Uncaught TypeError: mysqli_query(): Argument #1 ($mysql) must be of type mysqli, null given in /home/u616690408/domains/result.themensense.com/public_html/index.php:8
+Stack trace:
+#0 /home/u616690408/domains/result.themensense.com/public_html/index.php(8): mysqli_query()
+#1 {main}
+  thrown in /home/u616690408/domains/result.themensense.com/public_html/index.php on line 8
