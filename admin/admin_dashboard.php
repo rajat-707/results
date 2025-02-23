@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file"])) {
     $roll_number = $_POST["roll_number"];
     $password = $_POST["password"];
     $semester = $_POST["semester"];
-    $upload_dir = "../uploads/$semester/"; // Organize files by semester
+    $upload_dir = "../admin/uploads/$semester/"; // Organize files by semester
 
     // Create the directory if it doesn't exist
     if (!is_dir($upload_dir)) {
