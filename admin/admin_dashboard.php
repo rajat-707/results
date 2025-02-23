@@ -98,7 +98,6 @@ $result = $conn->query("SELECT * FROM results");
         <form action="" method="POST" enctype="multipart/form-data">
     <input type="text" name="roll_number" placeholder="Enter Roll Number" required>
     <input type="text" name="password" placeholder="Enter Password" required>
-    <input type="text" name="degree" placeholder="Enter Degree (e.g., B.Tech, M.Tech)" required>
     <input type="text" name="semester" placeholder="Enter Semester (e.g., Semester 1)" required>
     <input type="file" name="file" required>
     <button type="submit">Upload</button>
