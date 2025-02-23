@@ -69,7 +69,7 @@ error_reporting(0);
 
     <div class="sufee-login d-flex align-content-center flex-wrap" style="background-image:url(img/bg.jpg);">
         <div class="container">
-
+            <img src="img/bg.jpg">
         </div>
     </div>
     <div class="login-content">
