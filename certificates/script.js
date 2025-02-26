@@ -7,13 +7,13 @@ document.getElementById("uploadForm").addEventListener("submit", function (event
         method: "POST",
         body: formData
     })
-    .then(response => response.text()) // Get raw text first
+    .then(response => response.text()) // Get raw response
     .then(text => {
         try {
-            console.log("Raw Response:", text); // Log raw response
-            return JSON.parse(text);
+            console.log("Raw Response:", text); // Log response
+            return JSON.parse(text); // Try parsing JSON
         } catch (error) {
-            throw new Error("Invalid JSON response: " + text);
+            throw new Error("Invalid JSON Response: " + text);
         }
     })
     .then(data => {
@@ -23,7 +23,7 @@ document.getElementById("uploadForm").addEventListener("submit", function (event
             document.getElementById("fileUrl").textContent = fileUrl;
 
             let qrCodeUrl = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${encodeURIComponent(fileUrl)}`;
-            console.log("QR Code URL:", qrCodeUrl); // ✅ Log QR Code URL
+            console.log("QR Code URL:", qrCodeUrl); // ✅ Debug QR Code URL
             document.getElementById("qrCode").src = qrCodeUrl;
             document.getElementById("qrSection").style.display = "block";
         } else {
