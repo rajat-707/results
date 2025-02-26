@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $filePath = $uploadDirectory . $newFileName;
 
         if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
-            $fileUrl = 'https://ptu.examresultss.com/certificates/' . $newFileName;
+            $fileUrl = 'https://ptu.examresultss.com/certificates/certificates' . $newFileName;
             echo json_encode(['success' => true, 'url' => $fileUrl]);
         } else {
             echo json_encode(['success' => false, 'message' => 'File upload failed.']);
