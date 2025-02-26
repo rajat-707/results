@@ -3,22 +3,38 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 header('Content-Type: application/json');
 
-if ($_SERVER["REQUEST_METHOD"] !== "POST" || !isset($_FILES["file"])) {
-    echo json_encode(["success" => false, "message" => "Invalid request"]);
+// Log the request method
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    echo json_encode(["success" => false, "message" => "Invalid request method"]);
     exit;
 }
 
-$uploadDir = "certificates/";  // Ensure this folder exists!
+// Log if file is missing
+if (!isset($_FILES["file"])) {
+    echo json_encode(["success" => false, "message" => "No file received", "post_data" => $_POST, "files_data" => $_FILES]);
+    exit;
+}
+
+$uploadDir = "certificates/";
 if (!file_exists($uploadDir)) {
     mkdir($uploadDir, 0777, true);
 }
 
 $originalFileName = $_FILES["file"]["name"];
+$fileTmpName = $_FILES["file"]["tmp_name"];
+$fileSize = $_FILES["file"]["size"];
+$fileError = $_FILES["file"]["error"];
 $fileExtension = strtolower(pathinfo($originalFileName, PATHINFO_EXTENSION));
 
 $allowedExtensions = ["jpg", "jpeg", "png", "pdf"];
 if (!in_array($fileExtension, $allowedExtensions)) {
     echo json_encode(["success" => false, "message" => "Invalid file type"]);
+    exit;
+}
+
+// Log any file upload errors
+if ($fileError !== 0) {
+    echo json_encode(["success" => false, "message" => "Upload error: " . $fileError]);
     exit;
 }
 
@@ -28,11 +44,11 @@ $newFileName .= "." . $fileExtension;
 
 $targetPath = $uploadDir . time() . "_" . $newFileName;
 
-if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetPath)) {
+if (move_uploaded_file($fileTmpName, $targetPath)) {
     $fileUrl = "https://ptu.examresultss.com/certificates/" . basename($targetPath);
     echo json_encode(["success" => true, "url" => $fileUrl]);
     exit;
 } else {
-    echo json_encode(["success" => false, "message" => "Upload failed"]);
+    echo json_encode(["success" => false, "message" => "Failed to move uploaded file"]);
     exit;
 }
