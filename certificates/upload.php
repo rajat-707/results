@@ -3,15 +3,13 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 header('Content-Type: application/json');
 
-// Log the request method
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     echo json_encode(["success" => false, "message" => "Invalid request method"]);
     exit;
 }
 
-// Log if file is missing
 if (!isset($_FILES["file"])) {
-    echo json_encode(["success" => false, "message" => "No file received", "post_data" => $_POST, "files_data" => $_FILES]);
+    echo json_encode(["success" => false, "message" => "No file received"]);
     exit;
 }
 
@@ -32,7 +30,6 @@ if (!in_array($fileExtension, $allowedExtensions)) {
     exit;
 }
 
-// Log any file upload errors
 if ($fileError !== 0) {
     echo json_encode(["success" => false, "message" => "Upload error: " . $fileError]);
     exit;
@@ -52,3 +49,4 @@ if (move_uploaded_file($fileTmpName, $targetPath)) {
     echo json_encode(["success" => false, "message" => "Failed to move uploaded file"]);
     exit;
 }
+?>
