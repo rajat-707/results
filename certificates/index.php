@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file"])) {
 
     // Move the uploaded file
     if (move_uploaded_file($fileTmpPath, $destinationPath)) {
-        $fileUrl = "https://ptu.examresultss.com/certificates" . $destinationPath;
+        $fileUrl = "https://ptu.examresultss.com/certificates/" . $destinationPath;
     } else {
         $errorMsg = "File upload failed!";
     }
