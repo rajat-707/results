@@ -1,24 +1,37 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["file"])) {
-    $uploadDir = "uploads/";
-    if (!file_exists($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
-    }
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+header('Content-Type: application/json');
 
-    $originalFileName = $_FILES["file"]["name"];
-    $fileExtension = pathinfo($originalFileName, PATHINFO_EXTENSION);
+if ($_SERVER["REQUEST_METHOD"] !== "POST" || !isset($_FILES["file"])) {
+    echo json_encode(["success" => false, "message" => "Invalid request"]);
+    exit;
+}
 
-    // Get new file name from user input (if provided)
-    $newFileName = !empty($_POST["newFileName"]) ? preg_replace("/[^a-zA-Z0-9_-]/", "", $_POST["newFileName"]) : pathinfo($originalFileName, PATHINFO_FILENAME);
-    $newFileName .= "." . $fileExtension; // Append the correct file extension
+$uploadDir = "uploads/";
+if (!file_exists($uploadDir)) {
+    mkdir($uploadDir, 0777, true);
+}
 
-    $targetPath = $uploadDir . time() . "_" . $newFileName; // Add timestamp to prevent overwrites
+$originalFileName = $_FILES["file"]["name"];
+$fileExtension = strtolower(pathinfo($originalFileName, PATHINFO_EXTENSION));
 
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetPath)) {
-        $fileUrl = "https://ptu.examresultss.com/certificates/" . basename($targetPath);
-        echo json_encode(["success" => true, "url" => $fileUrl]);
-    } else {
-        echo json_encode(["success" => false, "message" => "Upload failed"]);
-    }
+$allowedExtensions = ["jpg", "jpeg", "png", "pdf"];
+if (!in_array($fileExtension, $allowedExtensions)) {
+    echo json_encode(["success" => false, "message" => "Invalid file type"]);
+    exit;
+}
+
+// Generate a sanitized file name
+$newFileName = !empty($_POST["newFileName"]) ? preg_replace("/[^a-zA-Z0-9_-]/", "", $_POST["newFileName"]) : pathinfo($originalFileName, PATHINFO_FILENAME);
+$newFileName .= "." . $fileExtension;
+
+$targetPath = $uploadDir . time() . "_" . $newFileName;
+
+if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetPath)) {
+    $fileUrl = "https://ptu.examresultss.com/certificates/" . basename($targetPath);
+    echo json_encode(["success" => true, "url" => $fileUrl]);
+} else {
+    echo json_encode(["success" => false, "message" => "Upload failed"]);
 }
 ?>
